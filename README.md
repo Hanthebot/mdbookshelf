@@ -4,8 +4,6 @@ A wrapper to grab multiple mdBook together, and serve them altogether on a stati
 
 ## Usage
 ### Structure
-
-#### This repository
 ```md
 .
 ├── src
@@ -18,9 +16,8 @@ A wrapper to grab multiple mdBook together, and serve them altogether on a stati
 ├── manager.py     # Manager to clear / export / serve books
 └── ...
 ```
-
-#### `src/data.json`
 ```json
+// src/data.json
 {
     "book_code_1": {
         "title": "Awesome Title 1", 
@@ -29,10 +26,10 @@ A wrapper to grab multiple mdBook together, and serve them altogether on a stati
     "book_code_2": {
         "title": "Awesome Title 2", 
         "path": "absolute_dir_to_mdbook2/book"
-    }
+    },
+    ...
 }
 ```
-#### Book directory
 ```md
 absolute_dir_to_mdbook/book
 ├── cover.png      # Book cover, automatically generated if needed
