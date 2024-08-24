@@ -1,10 +1,10 @@
 var data = {
-    "infoprocessing": {
-        "title": "Information Processor (24Sum)",
-        "path": "C:/Users/ruf77/OneDrive - HKUST Connect/Books/infoprocessing/book"
+    "book_code_1": {
+        "title": "Awesome Title 1", 
+        "path": "absolute_dir_to_mdbook/book"
     },
-    "zkp_mooc": {
-        "title": "Zero Knowledge Proofs MOOC (24F)",
-        "path": "C:/Users/ruf77/OneDrive - HKUST Connect/Books/zkp_mooc/book"
+    "book_code_2": {
+        "title": "Awesome Title 2", 
+        "path": "absolute_dir_to_mdbook2/book"
     }
 };
