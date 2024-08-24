@@ -7,6 +7,7 @@ A wrapper to grab multiple mdBook together, and serve them altogether on a stati
 #### This repository
 ```md
 .
+├── covers         # directory where covers are stored
 ├── src
 │   ├── cover.png  # default cover for your books
 │   ├── data.js    # data wrapped by `manager.py`
@@ -32,9 +33,11 @@ A wrapper to grab multiple mdBook together, and serve them altogether on a stati
 ```
 #### Book directory
 ```md
-absolute_dir_to_mdbook/book
-├── cover.png      # Book cover, automatically generated if needed
-├── index.html     # Home page for the book
+absolute_dir_to_mdbook
+├── cover.png          # Book cover, automatically generated if needed
+├── book
+│   ├── index.html     # Home page for the book
+│   └── ...
 └── ...
 ```
 
