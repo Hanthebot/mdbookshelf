@@ -22,10 +22,11 @@ def delete_junctions(directory_: str):
 def reset_js(data_: dict, command_: str = "serve", js: str = "./src/data.js"):
     """ overwrite the JS data file """
     # perform deep copy here
-    temp = {book_code_: val.copy() for book_code_, val in data_.items()}
+    temp = data_.copy()
+    temp["books"] = {book_code_: val.copy() for book_code_, val in data_["books"].items()}
     if command_ == "export":
-        for book_code_ in temp:
-            temp[book_code_]["path"] = "./" + book_code_
+        for book_code_ in temp["books"]:
+            temp["books"][book_code_]["path"] = "./" + book_code_
     with open(js, "w", encoding = "utf-8") as file:
         file.write("var data = " + json.dumps(temp, indent = 4) + ";")
 
@@ -61,7 +62,7 @@ if __name__ == "__main__":
     if command == "clear":
         sys.exit()
     i = 0
-    for book_code, vals in data.items():
+    for book_code, vals in data["books"].items():
         cover_dir = os.path.join(vals["path"], "../cover.png")
         if not os.path.exists(cover_dir):
             shutil.copy2("src/cover.png", cover_dir)

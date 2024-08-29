@@ -21,13 +21,16 @@ A wrapper to grab multiple mdBook together, and serve them altogether on a stati
 #### `src/data.json`
 ```json
 {
-    "book_code_1": {
-        "title": "Awesome Title 1", 
-        "path": "absolute_dir_to_mdbook/book"
-    },
-    "book_code_2": {
-        "title": "Awesome Title 2", 
-        "path": "absolute_dir_to_mdbook2/book"
+    "title": "Bookshelf",
+    "books": {
+        "book_code_1": {
+            "title": "Awesome Title 1", 
+            "path": "absolute_dir_to_mdbook/book"
+        },
+        "book_code_2": {
+            "title": "Awesome Title 2", 
+            "path": "absolute_dir_to_mdbook2/book"
+        }
     }
 }
 ```
