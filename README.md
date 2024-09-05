@@ -2,6 +2,8 @@
 
 A wrapper to grab multiple mdBook together, and serve them altogether on a static site.
 
+[Working demo](https://books.hanthebot.dev/)
+
 ## Usage
 ### Structure
 #### This repository
