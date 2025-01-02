@@ -6,11 +6,13 @@ import json
 import shutil
 import glob
 
+CONFIGS = ["src", "covers"]
+
 def delete_junctions(directory_: str):
     """ delete all custom subdir """
     delete_path = os.path.join(directory_, "*/")
     for dirs in glob.glob(delete_path):
-        if "src" in dirs or "covers" in dirs:
+        if any(config in dirs for config in CONFIGS):
             continue
         try:
             os.unlink(dirs[:-1])
@@ -58,6 +60,9 @@ if __name__ == "__main__":
         print("Correct usage: manager.py [serve / export / clear]")
         sys.exit()
     command = sys.argv[1].lower()
+    for config in CONFIGS:
+        if not os.path.exists(config):
+            os.mkdir(config)
     data = clear_setting(command)
     if command == "clear":
         sys.exit()
@@ -74,5 +79,5 @@ if __name__ == "__main__":
         # if the book is not in dir/cover.png, create one
         # copy it to covers/book_code.png
         i += 1
-        print(f"Created {i}/{len(data)} links for {book_code}", end = "\t\t\r")
+        print(f"Created {i}/{len(data['books'].keys())} links for {book_code}", end = "\t\t\r")
     print()
