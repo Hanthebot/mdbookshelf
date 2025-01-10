@@ -21,23 +21,22 @@ def delete_junctions(directory_: str):
     for dirs in glob.glob(os.path.join(directory_, "covers/*.png")):
         os.remove(dirs)
 
-def reset_js(data_: dict, command_: str = "serve", js: str = "./src/data.js"):
+def reset_js(data_: dict, js: str = "./src/data.js"):
     """ overwrite the JS data file """
     # perform deep copy here
     temp = data_.copy()
     temp["books"] = {book_code_: val.copy() for book_code_, val in data_["books"].items()}
-    if command_ == "export":
-        for book_code_ in temp["books"]:
-            temp["books"][book_code_]["path"] = "./" + book_code_
+    for book_code_ in temp["books"]:
+        temp["books"][book_code_]["path"] = "./" + book_code_
     with open(js, "w", encoding = "utf-8") as file:
         file.write("var data = " + json.dumps(temp, indent = 4) + ";")
 
-def clear_setting(command_:str = "serve", input_dir: str = "./src/data.json",
+def clear_setting(input_dir: str = "./src/data.json",
                   setup_dir: str = "./") -> dict:
     """ clear the setup and return the data """
     with open(input_dir, "r", encoding = "utf-8") as file:
         data_ = json.load(file)
-    reset_js(data_, command_)
+    reset_js(data_)
     delete_junctions(setup_dir)
     return data_
 
@@ -63,7 +62,7 @@ if __name__ == "__main__":
     for config in CONFIGS:
         if not os.path.exists(config):
             os.mkdir(config)
-    data = clear_setting(command)
+    data = clear_setting()
     if command == "clear":
         sys.exit()
     i = 0
